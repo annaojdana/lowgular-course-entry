@@ -2,7 +2,7 @@
   <ul class="employee__faces--wrapper" *ngIf="data$ | async as data; else empty">
     <li *ngFor="let employee of data">
       <figure>
-      <img src="{{employee.image}}" class="face">
+      <img src="{{employee.image}}" class="face" alt="{{employee.name}}">
         <figcaption class="name">{{ employee.name }}</figcaption>
       </figure>
     </li>
