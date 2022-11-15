@@ -2,7 +2,10 @@
 <div class="list-wrapper">
 <div class="label"><span class="id">id</span><span class="name">name</span><span class="email">email</span></div>
 <ul *ngIf="data$ | async as data; else empty">
-  <li *ngFor="let employee of data"><span class="id">{{ employee.id }}</span> <span class="name">{{ employee.name }}</span><span class="email">{{ employee.email }}</span> </li>
+  <li *ngFor="let employee of data">
+    <span class="id">{{ employee.id }}</span>
+    <span class="name">{{ employee.name }}</span>
+    <span class="email">{{ employee.email }}</span> </li>
 </ul>
 </div>
 <ng-template #empty> There is no data </ng-template>
