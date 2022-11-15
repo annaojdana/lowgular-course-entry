@@ -41,3 +41,18 @@ span{
 .name{
   width: 100px;
 }
+img{
+  display: block;
+  width: 100%;
+}
+
+.employee{
+  &__faces{
+    &--wrapper{
+      display: flex;
+      padding: 50px;
+      gap:30px;
+    }}
+  }
+
+

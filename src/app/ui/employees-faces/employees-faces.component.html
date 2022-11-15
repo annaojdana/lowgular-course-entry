@@ -1,0 +1,11 @@
+
+  <ul class="employee__faces--wrapper" *ngIf="data$ | async as data; else empty">
+    <li *ngFor="let employee of data">
+      <figure>
+      <img src="{{employee.image}}" class="face">
+        <figcaption class="name">{{ employee.name }}</figcaption>
+      </figure>
+    </li>
+  </ul>
+
+<ng-template #empty> There is no data </ng-template>
