@@ -1,11 +1,10 @@
+<ul class="d-flex p-5 gap-4" *ngIf="data$ | async as data; else empty">
+  <li class="card shadow" *ngFor="let employee of data">
+    <figure>
+      <img [src]="employee.img" class="card-img-top" alt="{{employee.name}}">
+      <figcaption class="card-body ">{{ employee.name }}</figcaption>
+    </figure>
+  </li>
+</ul>
 
-  <ul class="employee__faces--wrapper" *ngIf="data$ | async as data; else empty">
-    <li *ngFor="let employee of data">
-      <figure>
-      <img [src]="employee.image" class="face" alt="{{employee.name}}">
-        <figcaption class="name">{{ employee.name }}</figcaption>
-      </figure>
-    </li>
-  </ul>
-
-<ng-template #empty> There is no data </ng-template>
+<ng-template #empty> There is no data</ng-template>

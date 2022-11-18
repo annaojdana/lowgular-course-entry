@@ -1,11 +1,16 @@
-<h2>Employee list</h2>
-<div class="list-wrapper">
-<div class="label"><span class="id">id</span><span class="name">name</span><span class="email">email</span></div>
-<ul *ngIf="data$ | async as data; else empty">
-  <li *ngFor="let employee of data">
-    <span class="id">{{ employee.id }}</span>
-    <span class="name">{{ employee.name }}</span>
-    <span class="email">{{ employee.email }}</span> </li>
-</ul>
+<h2 class="text-success" >Employee list</h2>
+<div class="card shadow m-5 p-4">
+  <div class="label d-flex">
+    <div class="id">id</div>
+    <div class="name">name</div>
+    <div class="email">email</div>
+  </div>
+  <ul *ngIf="data$ | async as data; else empty">
+    <li class="d-flex" *ngFor="let employee of data">
+      <div class="id">{{ employee.personalNumber }}</div>
+      <div class="name">{{ employee.name }}</div>
+      <div class="email">{{ employee.mail }}</div>
+    </li>
+  </ul>
 </div>
-<ng-template #empty> There is no data </ng-template>
+<ng-template #empty> There is no data</ng-template>

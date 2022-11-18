@@ -12,6 +12,8 @@ h2{
 }
 ul{
   list-style: none;
+  margin: 0;
+  padding: 0;
 
 }
 li{
@@ -26,15 +28,7 @@ h1{
   text-transform: uppercase;
   font-weight: bold;
 }
-.list-wrapper{
-  margin-left: 50px;
-  padding: 20px;
-  width: 500px;
-  background-color: #fff;
-}
-span{
-  display: inline-block;
-}
+
 .id{
   width: 50px;
 }
@@ -44,15 +38,9 @@ span{
 img{
   display: block;
   width: 100%;
+  max-width: 250px;
 }
 
-.employee{
-  &__faces{
-    &--wrapper{
-      display: flex;
-      padding: 50px;
-      gap:30px;
-    }}
-  }
+
 
 
