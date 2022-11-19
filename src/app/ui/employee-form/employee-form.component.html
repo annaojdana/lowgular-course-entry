@@ -1,0 +1,14 @@
+
+<div class="card shadow m-5 p-4">
+  <h2 class="text-success m-0 mb-4">Add new employee</h2>
+  <form class="d-flex flex-column gap-3" [formGroup]="employeeForm" (ngSubmit)="onEmployeeFormSubmitted(employeeForm)">
+    <input class="form-control"
+           type="text"
+           formControlName="name"
+           placeholder="Name">
+    <input class="form-control"
+           type="text" formControlName="age" placeholder="Age">
+    <input class="btn btn-success align-self-end" style="width: 150px" type="submit" value="Save">
+  </form>
+</div>
+
