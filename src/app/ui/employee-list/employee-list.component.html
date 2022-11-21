@@ -8,10 +8,11 @@
     <div class="email">email</div>
   </div>
   <ul *ngIf="data$ | async as data; else empty">
-    <li class="d-flex" *ngFor="let employee of data">
+    <li class="d-flex mb-4 align-items-center" *ngFor="let employee of data">
       <div class="id">{{ employee.personalNumber }}</div>
       <div class="name">{{ employee.name }}</div>
       <div class="email">{{ employee.mail }}</div>
+      <a routerLink="/employee-details/{{ employee.personalNumber }}/{{ employee.name }}" class="btn btn-success" style="line-height: 16px; height: 30px">Details</a>
     </li>
   </ul>
 </div>
