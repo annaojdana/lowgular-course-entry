@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {EmployeeService} from '../../services/employee.service';
+import {CreateNewEmployeeModel} from '../../model/create-new-employee.model';
 
 @Component({
   selector: 'app-employee-form',
@@ -9,19 +10,22 @@ import {EmployeeService} from '../../services/employee.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmployeeFormComponent {
-  readonly employeeForm: FormGroup = new FormGroup({name: new FormControl(), age: new FormControl()});
+  readonly employeeForm: FormGroup = new FormGroup({
+    name: new FormControl(null, [Validators.required]),
+    age: new FormControl(null, [Validators.required, Validators.min(0)]),
+    salary: new FormControl(null, [Validators.required, Validators.min(0)])
+  });
 
   constructor(private _employeeService: EmployeeService) {
   }
 
-  onEmployeeFormSubmitted(employeeForm: FormGroup): void {
-    this._employeeService.create(
-      {
-        name: employeeForm.get('name')?.value,
-        age: employeeForm.get('age')?.value,
-        img: employeeForm.get('img')?.value,
-        mail:employeeForm.get('mail')?.value
-      }
-    ).subscribe();
+  onFormSubmitted(form: CreateNewEmployeeModel) {
+    this._employeeService.create(form).subscribe(
+      response =>
+
+        response.status === "success" ? alert(`User was successfully added to the database. Email: ${form.name},  ${form.age} Salary: ${form.salary}`) : alert('Bad request')
+    );
   }
+
+
 }

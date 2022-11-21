@@ -2,19 +2,25 @@
 
 <div class="card shadow m-5 p-4">
   <h2 class="text-success m-0 mb-4" >Employee list</h2>
-  <div class="label d-flex">
-    <div class="id">id</div>
-    <div class="name">name</div>
-    <div class="email">email</div>
+  <div class="label d-flex" >
+    <div class="id" style="font-size:18px ">id</div>
+    <div class="name" style="font-size:18px ">name</div>
+    <div class="email" style="font-size:18px ">email</div>
+
   </div>
   <ul *ngIf="data$ | async as data; else empty">
-    <li class="d-flex mb-4 align-items-center" *ngFor="let employee of data">
+    <li class="d-flex mb-4 align-items-center justify-content-between" style="font-size:13px " *ngFor="let employee of data">
+      <div class="d-flex">
       <div class="id">{{ employee.personalNumber }}</div>
       <div class="name">{{ employee.name }}</div>
       <div class="email">{{ employee.mail }}</div>
-      <a routerLink="/employee-details/{{ employee.personalNumber }}/{{ employee.name }}" class="btn btn-success" style="line-height: 16px; height: 30px">Details</a>
+      </div>
+      <div class="d-flex">
+      <a routerLink="/employee-details/{{ employee.personalNumber }}/{{ employee.name }}" class="btn btn-success mx-2" style="line-height: 16px; height: 30px;font-size:13px">Details</a>
+      <button class="btn btn-warning" (click)="remove(employee.personalNumber)" style="line-height: 16px; height: 30px; width: 100px;font-size:13px">Remove me</button>
+      </div>
     </li>
   </ul>
 </div>
 <ng-template #empty> There is no data</ng-template>
-<app-employees-faces></app-employees-faces>
+

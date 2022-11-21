@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { Observable } from 'rxjs';
-import { EmployeeService } from '../../services/employee.service';
-import { EmployeeModel } from '../../model/employee.model';
-import {PeopleModel} from "../../model/people.model";
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {Observable} from 'rxjs';
+import {EmployeeService} from '../../services/employee.service';
+import {PeopleModel} from '../../model/people.model';
 
 @Component({
   selector: 'employee-list',
@@ -11,6 +10,15 @@ import {PeopleModel} from "../../model/people.model";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeListComponent {
-  constructor( private _employeeService: EmployeeService) { }
+  constructor(private _employeeService: EmployeeService) {
+  }
+
   data$: Observable<PeopleModel[] | null> = this._employeeService.getAll();
+
+  remove(id: string) {
+    this._employeeService.delete(id).subscribe(response =>
+      response.status === "success" ? alert(`User was successfully removed.`) : alert("Bad request")
+    );
+
+  }
 }
